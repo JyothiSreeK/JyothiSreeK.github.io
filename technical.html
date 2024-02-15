@@ -64,30 +64,9 @@
 				<p>A simple HTML page </p>
 				Using the <a href="https://www.w3schools.com/html"> W3Schools template</a>
 				<hr>
-				<b>Interaction with forms</b>
+				
 				<div>
-					<i>Form with an HTTP GET Request</i>
-					<form action="/echo.php" method="GET">
-						Your input:<input type="text" name="data" onkeyup="console.log('You have pressed a key')">
-						<input type="submit" value="Submit">
-					</form>
-				</div>
-				<div>
-					<i>Form with an HTTP POST Request</i>
-					<form action="/echo.php" method="POST">
-						Your input:<input type="text" name="data" onkeyup="console.log('You have pressed a key')">
-						<input type="submit" value="Submit">
-					</form>
-				</div>
-				<div>
-					<i>Ajax requests</i><br>
-					Your input:
-					<input name="data"
-							onkeypress="console.log('You have pressed a key')" id="data">
-					<input class="button round" type="button" value="Ajax Echo" onclick="getEcho()">
-					<input class="button round" type="button" value="jQuery Ajax GET Echo" onclick="jQueryAjax()">
-					<input class="button round" type="button" value="jQuery Ajax POST Echo" onclick="jQueryAjaxPost()">
-					<input class="button round" type="button" value="guess Age" onclick="guessAge($('#data').val())">
+					
 					<div id="response"></div>
 					<script>
 						function getEcho(){
@@ -150,7 +129,67 @@
 					<i>Inlined JavaScript</i>
 					<div id="date" onclick="document.getElementById('date').innerHTML=Date()">Click here to show Date()</div>
 				</div>
+				<div>
+					<h2>Current Weather</h2>
+					<div id="weather-info">
+						<!-- Weather data will be displayed here -->
+					  </div>
+					<div>
+						<script>
+  
+							const apiKey = 'cb388c42c8154dc1a25190f00185f145';
+							const apiUrl = `https://api.weatherbit.io/v2.0/current?key=${apiKey}&city=cincinnati`;
+						  
+							// Fetch weather data from Weatherbit.io API
+							fetch(apiUrl)
+							  .then(response => response.json())
+							  .then(data => {
+								// Extract relevant weather information
+								const weather = data.data[0];
+								const temperature = weather.temp;
+								const description = weather.weather.description;
+						  
+								// Display weather information on the page
+								document.getElementById('weather-info').innerHTML = `
+								  <p>Temperature: ${temperature}°C</p>
+								  <p>Description: ${description}</p>
+								`;
+							  })
+							  .catch(error => {
+								console.error('Error fetching weather data:', error);
+							  });
+						  </script>
+
+					</div>
+				</div>
 			</div>
+		</div>
+		<div>
+			<h2>Course Description</h2>
+			<p>In this course, students will study basic web application development with front-end (HTML5, JavaScript, CSS) and back-end (PHP/MySQL). Web application vulnerabilities and attacks will be introduced and explored with hands-on exercises on the range. Secure programming principles and practices will be introduced to avoid potential web application vulnerabilities and attacks.</p>
+			<h2>Course Outcomes</h2>
+			<h3>Lab-1</h3>
+			<ul>
+				<li>Learned how analyze packeting using Wireshark.</li>
+				<li>Got to know about telnet, curl.</li>
+				<li>Understood how the packets work when a http request is sent and how the response is generated.</li>
+                <li>Used C, html, php and echo to understand the functionality of packets and how the http stream works.</li>
+			</ul>
+			<h3>Lab-2</h3>
+			<ul>
+				<li>I have learnt how to integrate HTML with JavaScript.</li>
+				<li>Added styling to the html page using CSS.</li>
+				<li>Sent Ajax GET and POST request.</li>
+				<li>Listen to the http request and display in the element.</li>
+			</ul>
+			<h3>Hackathon-1</h3>
+			<ul>
+				<li>During this hackathon, I gained knowledge about cross-site scripting (XSS) attacks.</li>
+				<li>I completed levels 0 to 6, which required me to deduce the source code.</li>
+				<li>I received hints that aided me in completing these levels.</li>
+				<li>I discovered how XSS attacks can be executed on websites.</li>
+				<li>I learned strategies to prevent such attacks. This hackathon comprised two main tasks, each with several sub-tasks, and the grades were distributed accordingly.</li>			
+			</ul>
 		</div>
 	</div>
 </body>
